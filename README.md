@@ -11,7 +11,7 @@ Con las mediciones de hoy en la estación del Aeropuerto Rafael Núñez (IDEAM),
 Requiere Python 3.10 o superior.
 
 ```bash
-git clone <URL_DEL_REPO>
+git clone <https://github.com/Davidpel31/lluvia-cartagena>
 cd lluvia-cartagena
 pip install -r requirements.txt
 python src/lineas_base.py

@@ -1,0 +1,4 @@
+modelo,f1_llueve,auc,precision,recall,exactitud,VP,FP,FN,VN
+Mayoritario (nunca llueve),0.0,0.5,0.0,0.0,0.783,0,0,155,558
+Persistencia (igual que hoy),0.394,0.613,0.394,0.394,0.736,61,94,94,464
+"Regresión logística (preliminar, sin ajuste)",0.206,0.743,0.429,0.135,0.773,21,28,134,530

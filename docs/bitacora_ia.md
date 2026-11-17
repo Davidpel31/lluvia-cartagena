@@ -1,8 +1,19 @@
-# Bitácora de uso de inteligencia artificial
+# Bitácora humano-IA
 
-## Hito 1
+Registro de cada uso relevante de asistentes de IA en el proyecto.
 
-| Fila | Fecha | Herramienta / actividad | Aporte, revisión y verificación |
-|---|---|---|---|
-| 3 | Por confirmar | Claude se utilizó para redactar el borrador del Hito 1 a partir de la idea inicial del estudiante. | Claude desarrolló la redacción del borrador. Un compañero revisó el texto. No se recuerdan cambios específicos posteriores. |
-| 4 — Cómo se verificó | — | Verificación de noticias citadas de Noticias RCN y El Heraldo. | Se abrieron varios enlaces de ambos medios y se comprobaron fechas y cifras. La verificación fue parcial: no se confirmó que se revisaran todos los enlaces citados. David debe revisar los enlaces restantes antes de entregar. |
+| # | Fecha | Integrante | Herramienta | Para qué se usó | Qué se aceptó, modificó o descartó | Cómo se verificó |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 2026-11-05 | David Peláez | Claude (claude.ai) | Resumir los lineamientos del proyecto final y proponer 10 temas posibles con su ruta, línea base y métricas | Se aceptó el tema «¿Lloverá mañana en Cartagena?» (Ruta C). Se descartó continuar RetainIQ-Agent porque los compañeros indicaron que el tema debía ser nuevo. | Se comparó el resumen con el documento de lineamientos del curso (rutas, 9 componentes, hitos, rúbrica). |
+| 2 | 2026-11-05 | David Peláez | Claude (claude.ai) | Documento con las opciones de tema para que el compañero escogiera y redactara el Hito 1 | Se aceptó como guía; la redacción del borrador la hizo Jose. | Revisión del documento por ambos integrantes. |
+| 3 | 2026-11-05 (fecha del PDF del borrador) | Jose Pereira | Claude | Redactar el borrador del Hito 1 a partir de la idea inicial | Claude redactó el borrador a partir de la idea del equipo. No se recuerdan cambios específicos hechos por Jose sobre ese texto. | Un compañero revisó el texto. |
+| 4 | 2026-11-05 | David Peláez | Claude (claude.ai) | Revisar el borrador del Hito 1 y buscar fuentes reales de relevancia | Se aceptaron las correcciones: código estudiantil, fuente de relevancia real (Noticias RCN 2026 y El Heraldo 2025) en lugar de una cita genérica, un solo modelo (Random Forest) y umbral medido en prueba. Se recortó a una página. | Jose abrió los enlaces de ambos medios y comprobó fechas y cifras (verificación parcial). El 16/11 se revisaron de nuevo los dos enlaces: títulos, fechas (24/10/2026 y 05/06/2025) y cifras (8 y 10 barrios) coinciden. La nota de RCN habla tanto de «más de 3 horas» como de «cuatro horas» de lluvia. |
+| 5 | 2026-11-16 | David Peláez | Claude (claude.ai) | Guía paso a paso para descargar los datos diarios en DHIME y qué parámetros escoger | Se aceptó. Como no existía «humedad relativa media», se usaron humedad calculada máxima y mínima diaria. El viento quedó pendiente porque la descarga se bloqueaba. | Capturas de la selección de parámetros y de los términos de uso en `docs/evidencia/`. |
+| 6 | 2026-11-16 | David Peláez | Claude (claude.ai) | Revisar los CSV de DHIME, escribir `preparar_datos.py`, `lineas_base.py`, el notebook de exploración y el README | Se aceptó el código. Reglas de limpieza: humedad > 100 % se recorta, tmax > 39 °C se marca faltante. Se decidió mantener la partición del Hito 1 y excluir días incompletos. | Se ejecutó `python src/lineas_base.py` en el PC de David siguiendo el README y se obtuvieron los mismos resultados del avance (F1 persistencia 0,394; AUC logística 0,743). |
+| 7 | 2026-11-16 | David Peláez | Claude (claude.ai) | Revisar el repositorio antes de entregar el Hito 2 | Se detectó que faltaban `docs/evidencia/` y `experiments/`, que la bitácora del repo solo tenía las filas de Jose y que el comando `git clone` del README tenía `< >` que lo hacían fallar. Se unió la bitácora y se corrigió el README. | Se clonó el repositorio desde GitHub y se revisaron el historial de commits y los archivos. |
+
+## Casos en que la IA se equivocó
+
+1. **Código de la estación.** La IA indicó la estación convencional 14015020 a partir de documentos del IDEAM, y así quedó en el Hito 1. Los datos diarios que entregó DHIME vienen con el código **14015080**. Se detectó al revisar la columna `CodigoEstacion` de los CSV y se corrigió en el README y el avance del Hito 2.
+2. **Formato de fecha.** El primer script de cobertura que propuso la IA asumía fechas `dd/mm/aaaa`, porque así venía la primera descarga (totales anuales). Las descargas diarias vienen como `aaaa-mm-dd`, y el script habría fallado. Se detectó al correrlo con los archivos nuevos; el script final lee ambos formatos.
+3. **Proyecto anterior equivocado.** Al evaluar si continuar con el proyecto anterior, la IA recomendó primero InvoiceFlow-Agent, aunque el agente implementado en la Fase 2 había sido RetainIQ-Agent. Se corrigió en la misma conversación.

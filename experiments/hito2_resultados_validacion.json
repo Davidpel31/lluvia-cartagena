@@ -1,0 +1,55 @@
+{
+  "semilla": 42,
+  "conjunto_evaluado": "validacion 2021-2022",
+  "dias_entrenamiento": 3736,
+  "dias_validacion": 713,
+  "porcentaje_lluvia_validacion": 21.7,
+  "predictores": [
+    "lluvia_mm",
+    "llueve_hoy",
+    "tmax",
+    "tmin",
+    "hr_max",
+    "hr_min",
+    "mes_sin",
+    "mes_cos"
+  ],
+  "resultados": [
+    {
+      "modelo": "Mayoritario (nunca llueve)",
+      "f1_llueve": 0.0,
+      "auc": 0.5,
+      "precision": 0.0,
+      "recall": 0.0,
+      "exactitud": 0.783,
+      "VP": 0,
+      "FP": 0,
+      "FN": 155,
+      "VN": 558
+    },
+    {
+      "modelo": "Persistencia (igual que hoy)",
+      "f1_llueve": 0.394,
+      "auc": 0.613,
+      "precision": 0.394,
+      "recall": 0.394,
+      "exactitud": 0.736,
+      "VP": 61,
+      "FP": 94,
+      "FN": 94,
+      "VN": 464
+    },
+    {
+      "modelo": "Regresión logística (preliminar, sin ajuste)",
+      "f1_llueve": 0.206,
+      "auc": 0.743,
+      "precision": 0.429,
+      "recall": 0.135,
+      "exactitud": 0.773,
+      "VP": 21,
+      "FP": 28,
+      "FN": 134,
+      "VN": 530
+    }
+  ]
+}
